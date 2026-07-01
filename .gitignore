@@ -1,0 +1,23 @@
+# Rust
+/target
+**/target
+Cargo.lock
+
+# Anchor / Solana
+.anchor
+test-ledger
+**/*.rs.bk
+programs/**/target
+
+# Node / frontend
+node_modules
+app/node_modules
+app/.next
+app/dist
+.env
+.env.local
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode

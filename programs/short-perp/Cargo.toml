@@ -1,0 +1,25 @@
+[package]
+name = "short-perp"
+version = "0.1.0"
+edition = "2021"
+description = "Solana/Anchor program for fully-collateralized, capped-payout matched shorts on graduated pump.fun tokens."
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "short_perp"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+idl-build = ["anchor-lang/idl-build"]
+
+[dependencies]
+# NOTE: this crate is EXCLUDED from the root cargo workspace. It is built with
+# `anchor build`, which resolves these against the pinned Solana/Anchor toolchain.
+# Pin exact versions once you install Anchor locally (`avm use <version>`).
+anchor-lang = "0.31"
+anchor-spl = "0.31"
+
+# The audited, host-tested math. Reused verbatim on-chain (no_std, zero deps).
+short-core = { path = "../../core" }

@@ -1,0 +1,12 @@
+# Root cargo workspace.
+#
+# Only the pure-Rust `core` crate is a member so that `cargo test` builds and
+# runs the risk/oracle/settlement math WITHOUT needing the Solana toolchain.
+#
+# The on-chain Anchor program under `programs/short-perp` is intentionally
+# EXCLUDED: it depends on solana-program/anchor-lang and is built separately
+# with `anchor build`. See programs/short-perp/README.md.
+[workspace]
+resolver = "2"
+members = ["core"]
+exclude = ["programs/short-perp"]

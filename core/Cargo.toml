@@ -1,0 +1,22 @@
+[package]
+name = "short-core"
+version = "0.1.0"
+edition = "2021"
+description = "Pure-Rust risk, oracle, and capped-payout settlement math for a fully-collateralized memecoin short venue. No external dependencies; usable both on-chain (via the Anchor program) and off-chain (keepers/backtests)."
+license = "MIT OR Apache-2.0"
+
+[lib]
+# Pure logic crate. `no_std`-friendly so the same code can be reused inside the
+# Solana program without pulling std.
+name = "short_core"
+path = "src/lib.rs"
+
+[dependencies]
+# INTENTIONALLY EMPTY. Zero third-party deps keeps this crate:
+#   1. auditable (nothing to trust but the standard library),
+#   2. reusable inside the on-chain program (no_std),
+#   3. offline-buildable in CI/sandboxes.
+
+[dev-dependencies]
+# Also empty: the fuzz/property tests use a tiny in-file PRNG (no proptest) so
+# `cargo test` needs no network access.
